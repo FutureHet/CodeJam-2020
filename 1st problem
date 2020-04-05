@@ -1,0 +1,48 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+int main() {
+	int t;
+    cin >> t;
+	for(int m=0;m<t;m++){
+	    int n;    
+	    cin >> n;
+	    int sum=0,a[n][n],cr=0,cc=0;
+	    for(int i=0;i<n;i++){
+	    	for(int j=0;j<n;j++){
+	    		cin >> a[i][j];
+	    		if(i==j){
+	    			sum+=a[i][j];
+	    		}
+	    	}
+	    }
+	    for(int i=0;i<n;i++){
+	        for(int j=0;j<n-1;j++){
+	            int p=1;
+	            for(int k=j+1;k<n;k++){
+	                if(a[i][j]==a[i][k]){
+	                    p=2;
+	                    cr++;
+	                    break;
+	                }
+	            }
+	            if(p==2)
+	                break;
+	        }
+	        for(int j=0;j<n-1;j++){
+	            int p=1;
+	            for(int k=j+1;k<n;k++){
+	                if(a[j][i]==a[k][i]){
+	                    p=2;
+	                    cc++;
+	                    break;
+	                }
+	            }
+	            if(p==2)
+	                break;
+	        }
+	    }
+	    cout << "Case #" << (m+1) << ": " << sum << " " << cr << " " << cc << "\n";
+	}
+}
