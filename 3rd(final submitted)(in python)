@@ -1,0 +1,31 @@
+# this is the final code which I uploaded at last 
+# before this I submitted in c++ but in that code one boundary was not covered and not able to identify so then coded in python.
+
+for z in range(int(input())):
+    n=int(input())
+    a=[]
+    ans=[]
+    for i in range(n):
+        ans.append('C')
+
+    for i in range(n):
+        b=list(map(int,input().split()))
+        b.append(i)
+        a.append(b)
+
+    a=sorted(a)
+    c=0;j=0;p=0
+    for i in range(0,n):
+        if(a[i][0]>=j):
+            ans[a[i][2]]='J'
+            j=a[i][1]
+        elif(a[i][0]>=c):
+            ans[a[i][2]]='C'
+            c=a[i][1]
+        else:
+            p=1
+            break
+    if(p==1):
+        print("Case #"+str(z+1)+": "+"IMPOSSIBLE")
+    else:
+        print("Case #" + str(z + 1) + ":" , ''.join(ans))
