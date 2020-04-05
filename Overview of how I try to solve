@@ -1,0 +1,15 @@
+I did problems on my own.
+
+I succesfully did 3 problems and in the 4 th one only passed the first test set.
+
+1:- Iterating through the matrix and checking whether their is any duplicate or not.
+2:- using one counter vairable checking whether the next no is how much more or less adn according to it increase or decrease it and adding 
+    opening or closing paranthesis in the final string.
+3:- Initializing the final string whith c and then cheking the next process start time and the last one index end time of both c and j and 
+    according to it change the string and if getting both busy then printing impossible.
+4:- In that when the bits string lenght will become more than 11 then I don't know how to manipulate it so can achive answer.
+5:- I was first finding the the n elements which sum can be k and each is less than n and then .
+    I first place them at the diagonal and after that using the fulfill function i filled the other elemnts by column wise from the left
+    to right in matrix.
+    
+Thanks for reading...
