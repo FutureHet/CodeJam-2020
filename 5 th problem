@@ -1,0 +1,95 @@
+# I was not able to complete this one.
+# I got my mistake in it.
+# the mistake is:- I had to do backtracking and find the all possible solution then had to fill the array using back tracking.
+# it is mixture of famous porblems queen's problem and soduko problem
+#include <bits/stdc++.h> 
+using namespace std; 
+/*
+for(int i=0;i<(n-k%n);i++)
+*/
+const long long MAX = 50; 
+long long ans[MAX][MAX]; 
+
+void fulfill(long long i, long long j, long long n,long long x) 
+{ 
+	for (long long k = i + 1; k < n; k++){
+		x=x%n;
+		ans[k][j] = ++x;
+		x=x%n;
+	}
+	for (long long k = 0; k < i; k++){ 
+		x=x%n;
+		ans[k][j] = ++x; 
+		x=(x%n);
+    }
+} 
+void cm(long long n,long long k) 
+{ 
+    long long r = n - 1, l = 0; 
+    long long a[n]={0};
+    if (k % n == 0) 
+    { 
+        for(long long i=0;i<n;i++) 
+            a[i] = k/n; 
+    } 
+    else
+    {
+        long long zp = n - (k % n); 
+        long long pp = k/n; 
+        for(long long i=0;i<n;i++)  
+        { 
+  
+            if(i>= zp) 
+            a[i]=(pp+1); 
+            else
+            a[i]=pp; 
+        } 
+    } 
+	for (long long i = 0; i < n; i++) 
+	{
+	    ans[i][l]=a[i];
+	    fulfill(i,l,n,a[i]);
+	    l++;
+	}
+} 
+
+int main() 
+{ 
+    long long t;
+    cin >> t;
+	for(long long l=0;l<t;l++){
+    	long long n,k;
+    	cin >> n >> k;
+    	long long flag=0;
+    	if(k>=n){
+        	cm(n,k);
+        	for(long long i=0;i<n;i++){
+        	    for(long long j=0;j<n-1;j++){
+        	        for(long long k2=j+1;k2<n;k2++){
+        	            if(ans[i][j]==ans[i][k2]){
+        	                flag=1;
+        	                break;
+        	            }
+        	            if(ans[j][i]==ans[k2][i]){
+        	                flag=1;
+        	                break;
+        	            }
+        	        }if(flag==1)
+        	            break;
+        	    }if(flag==1)
+        	        break;
+        	}
+        	if(flag==0){
+            	cout << "Case #" << (l+1) << ": " << "POSSIBLE" <<"\n";
+                for (long long i = 0; i < n; i++) 
+            	{ 
+            		for (long long j = 0; j < n; j++) 
+            			printf("%lld ",ans[i][j]); 
+            		printf ("\n"); 
+            	}
+        	}
+    	}if(flag==1 | k<n){
+    	    cout << "Case #" << (l+1) << ": " << "IMPOSSIBLE" <<"\n";
+    	}
+	}
+} 
