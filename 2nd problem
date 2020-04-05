@@ -1,0 +1,38 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+int main() {
+	int t;
+    cin >> t;
+	for(int l=0;l<t;l++){
+	    string s,ans;
+	    cin >> s;
+	    int count=0;
+	    char char_array[s.length()+1];
+	    strcpy(char_array, s.c_str()); 
+	    for(int i=0;i<s.length();i++){
+	       if(count<((int)(char_array[i])-48)){
+	           for(int j=0;j<(((int)(char_array[i])-48)-count);j++){
+    	           ans+='(';
+	           }
+	           count+=(((int)(char_array[i])-48)-count);
+	           ans+=char_array[i];
+	       }
+	       else if(count>((int)(char_array[i])-48)){
+	           for(int j=0;j<(count-((int)(char_array[i])-48));j++){
+    	           ans+=')';
+	           }
+	           count-=(count-((int)(char_array[i])-48));
+	           ans+=char_array[i];
+	       }
+	       else{
+	           ans+=char_array[i];
+	       }
+	    }
+	    for(int i=0;i<count;i++){
+	        ans+=')';
+	    }
+	    cout << "Case #" << (l+1) << ": "<< ans << "\n";
+	}
+}
